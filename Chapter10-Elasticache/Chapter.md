@@ -60,7 +60,7 @@ class: center, middle
 
 
 
-![Default-aligned image](figures/Chapter10-cache-aside.png)
+![Default-aligned image](figures/Chapter10-cache-aside.PNG)
 
 ---
 
