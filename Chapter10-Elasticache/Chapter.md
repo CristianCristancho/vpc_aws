@@ -60,7 +60,7 @@ class: center, middle
 
 
 
-![Default-aligned image](Chapter10-cache-aside.png)
+![Default-aligned image](figures/Chapter10-cache-aside.png)
 
 ---
 
@@ -159,7 +159,7 @@ class:center, middle
 
 
 class:center, middle 
-![Default-aligned image](Chapter10-redisreplicas.PNG)
+![Default-aligned image](figures/Chapter10-redisreplicas.PNG)
 
 ---
 
