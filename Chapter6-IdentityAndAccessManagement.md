@@ -70,7 +70,7 @@ A policy can be associated directly with an IAM user in one of two ways:
  - **group policy**
  - **managed policies**
 
- ![alt text](https://gitlab.com/hollmanenciso/AWS-study/raw/master/Figures/figure_10_Associating_policies_with_principals.PNG "shows the different ways that polices can be associated with an IAM User. - Associating IAM users with policies")
+ ![iam associate policies](Figures\chapter6-figure10-Associating-policies-with-principals.PNG)
 
 
 ## Other key features
