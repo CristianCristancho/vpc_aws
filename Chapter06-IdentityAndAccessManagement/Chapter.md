@@ -8,6 +8,8 @@ Active Directory can be extended into the cloud to continue to fill that need.AW
 with your on-premises Active Directory.
 - You can manipulate IAM through the management console, AWS CLI and via AWS SDK
 
+---
+
 ## Principals
 Is an IAM identity allowed to interact with the resources. Can be permanent or temporary, and it can be represent a human or an application and exist 3 types of principals: root users, IAM users and roles/temporary security tokens.
 
@@ -16,6 +18,8 @@ Is the first AWS account created once you been registered on AWS that has comple
 
 ### IAM user
 Are persistent identities to represent people or applications. Can be created by principals
+
+---
 
 ### Roles/Temporary Security Tokens
 Roles are used to grant specific privileges to specific actors for a set duration of time. These actors can be authenticated by AWS or some trusted external system. When one of these actors assumes a role, AWS provides the actor with a temporary security token from the AWS Security Token Service (STS) that the actor can use to access to the AWS services.
@@ -26,6 +30,8 @@ Roles and temporary security tokens enable a number of use cases:
  - Cross-Account Access: Granting permissions to users from other AWS accounts.
  - Federation: Granting permissions to users authenticated by a trusted external system.
 
+---
+
 ### EC2 Roles
 Using IAM roles for Amazon EC2 removes the need to store AWS credentials in a configuration file.
 Roles grant the option to attach the policy to the EC2 instances and the instance/application on the instance can access to the services like s3, dynamo etc with a temporary token and pasing it to the API that it's automatically.
@@ -33,12 +39,16 @@ Roles grant the option to attach the policy to the EC2 instances and the instanc
 ### Cross-account Access
 Grant access to AWS resources to IAM users in other AWS accounts. This is highly recommended as a best practice, as opposed to distributing access keys outside your organization.
 
+---
+
 ### Federation
 Similarly, web-based applications may want to leverage web-based identities such as Facebook, Google, or Login with Amazon. IAM Identity Providers provide the ability to federate these outside identities with IAM and assign privileges to those users authenticated outside of IAM.
 
 Can integrated with 2 different types of outside Identity Providers (IdP) For federating web identities such as Facebook, Google, or Login with Amazon, IAM supports integration via OpenID Connect (OIDC).
 
 For federating internal identities, such as Active Directory or LDAP, IAM supports integration via Security Assertion Markup Language 2.0 (SAML)
+
+---
 
 ## Authentication
 There are three ways that IAM authenticates a principal:
@@ -51,6 +61,8 @@ There are three ways that IAM authenticates a principal:
 
 Is handled in IAM by defining specific privileges in policies and associating those policies with principals.
 
+---
+
 ### Policies
 Is a JSON document that fully defines a set of permissions to access and manipulate AWS resources. each
 permission defining:
@@ -61,6 +73,8 @@ permission defining:
  - **action**: The subset of actions within a service that the permission allows or denies.
  - **condition**: Defines one or more additional restrictions that limit the actions allowed by the permission
 
+---
+
 ## Associating Policies with Principals
 There are several ways to associate a policy with an IAM user; we are going to cover just the most common.
 A policy can be associated directly with an IAM user in one of two ways:
@@ -70,12 +84,14 @@ A policy can be associated directly with an IAM user in one of two ways:
  - **group policy**
  - **managed policies**
 
+---
+
  ![iam associate policies](figures\chapter6-figure10-Associating-policies-with-principals.PNG)
 
+---
 
 ## Other key features
  Principals, authentication, and authorization, there are several other features of the IAM service
-
 
 ### Multi-Factor authentication (MFA)
 Can add an extra layer of security to your infrastructure by adding a second method of authentication. Can be assigned to any IAM user account, whether the account represents a person or application
