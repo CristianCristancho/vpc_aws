@@ -12,7 +12,7 @@ The service does not guarantee FIFO delivery of messages. If your system require
 
 ### Message lifecycle
 
- ![lifecicle](Figures\chapter8-figure1-MessageLifecicle.PNG "describes the lifecycle of an Amazon SQS message, called Message A, from creation to deletion. Assume that a queue already exists.")
+ ![lifecicle](figures\chapter8-figure1-MessageLifecicle.PNG "describes the lifecycle of an Amazon SQS message, called Message A, from creation to deletion. Assume that a queue already exists.")
 
 ### Queue and Message Identifiers
 Messages are identified via a globally unique ID that Amazon SQS returns when the message is delivered to the queue.
@@ -63,4 +63,4 @@ Web service for mobile and enterprise messaging that enables you to set up, oper
 SNS consists of two types of clients: **publishers** and **subscribers** (sometimes known as producers and consumers). Publishers communicate to subscribers asynchronously by sending a message to a topic. A **topic** is simply a logical access point/communication channel that contains a list of subscribers and the methods used to communicate to them
 
 
- ![messages](Figures\chapter8-figure2-SNS_TopicDelivery.PNG "shows this process at a high level. A publisher issues a message on a topic. The message is then delivered to the subscribers of that topic using different methods, such as Amazon SQS, HTTP, HTTPS, email, SMS, and AWS Lambda.")
+ ![messages](figures\chapter8-figure2-SNS_TopicDelivery.PNG "shows this process at a high level. A publisher issues a message on a topic. The message is then delivered to the subscribers of that topic using different methods, such as Amazon SQS, HTTP, HTTPS, email, SMS, and AWS Lambda.")

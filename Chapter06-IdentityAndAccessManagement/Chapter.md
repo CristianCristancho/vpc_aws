@@ -70,7 +70,7 @@ A policy can be associated directly with an IAM user in one of two ways:
  - **group policy**
  - **managed policies**
 
- ![iam associate policies](Figures\chapter6-figure10-Associating-policies-with-principals.PNG)
+ ![iam associate policies](figures\chapter6-figure10-Associating-policies-with-principals.PNG)
 
 
 ## Other key features
