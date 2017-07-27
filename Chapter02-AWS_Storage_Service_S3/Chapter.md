@@ -38,10 +38,28 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
 
 - Optimized for data storage and long-term backups (low cost).
 - Retrieval of 3 to 5 hours.
-- Use as storage class of S3 and independent storage service
+- Use as storage class of S3 and / or independent storage service
 
 ---
+## Object Storage Vs. Traditional Block and File Storage
 
+- <u>Block Storage:</u> Low  level number (raw), and manage data as fixed-size blocks
+- <u>File Storage:</u> High level OS level: structure and hierarchy of files / folders
+- Both accessed from a Storage Area Network (SAN):
+  - Protocols: Fibre Channel, iSCSI, Network attached storage (NAS) file server
+    - Over NFS (Network File System) or CIFS (Common Internet File System)
+- All depends of the OS / Server.
+
+ <u>Amazon S3:</u>
+<i>Objet Storage</i> Server independent and accessed over the Internet
+  - Use and API based on standard HTTP.
+  - Each object contains data and metadata.
+  - Objects reside on <b><i>buckets</i></b> and identified by unique user-specific key.
+  - Buckets are flat folder with no File System: unlimited # of objects. No sub-buckets.
+  - Operations: GET and PUT
+  - No worry to replication, capacity planning, scalability: S3 automatically partitions buckets to support high request, replicate across regions and simultaneous access users.
+
+## Amazon S3 Basics
 
 
 
