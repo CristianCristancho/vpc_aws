@@ -3,6 +3,9 @@
 class: center, middle
 
 ## Amazon Simple Storage Service (Amazon S3) and Amazon Glacier
+
+![Default-aligned image](figures/Chapter02-S3.PNG)
+
 Amazon S3 provides developers and IT teams with secure, durable, and highly-scalable cloud
 storage.
 - Object Storage with simple web interface:  store and retrieve any amount of data from anywhere on the web
@@ -30,6 +33,9 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
 ---
 
 ## Amazon Glacier Cloud Storage Service
+![Default-aligned image](figures/Chapter02-Glacier.PNG)
+
+
 - Optimized for data storage and long-term backups (low cost).
 - Retrieval of 3 to 5 hours.
 - Use as storage class of S3 and independent storage service
@@ -49,10 +55,7 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
 ---
 
 
-## Cache-aside Pattern
 
-
-![Default-aligned image](figures/Chapter10-cache-aside.PNG)
 
 ---
 
