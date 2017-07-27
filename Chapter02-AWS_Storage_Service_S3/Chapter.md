@@ -62,7 +62,29 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
 ## Amazon S3 Basics
 
 
+## Practice with AWS account:
 
+## AWS S3 Console
+- Create an user on Identity and Access Management IAM Console:
+  - marioceron
+- Create a bucket: marioceron.com
+  - Create a folder for example: mario, test
+  - Upload files
+
+![Default-aligned image](figures/Chapter02-aws_console_mario.PNG)
+
+## AWS CLI:
+http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-windows.html
+- Install package and add on machine the PATH, then configure with:
+   <b><i>aws configure</i></b>
+  -  Requires AWS key and Secret Key
+
+![Default-aligned image](figures/Chapter02-mario.PNG)
+
+## S3 Client: Cyberduck
+- On Windows / OSX
+
+![Default-aligned image](figures/Chapter02-mario_cyberduck.PNG)
 ---
 
 
