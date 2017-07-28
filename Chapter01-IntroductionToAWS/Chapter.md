@@ -72,7 +72,7 @@
 
 ###  Regions
 
- * AWS region is a physical geographic location that consists of a cluster of data center.
+ * An AWS region is a physical geographical location that consists of a cluster of data centers
  * Each region  is completely independent and isolated from the other ones.
 
 
@@ -143,7 +143,7 @@ as a service and a petabyte-scale data warehouse solution.
 
 ## MANAGEMENT TOOLS
 
-AWS provides a variety of tools that help organizations manage your AWS resources.
+AWS provides a variety of tools that help organizations manage their AWS resources.
 
 <img  src ="figures/Picture10.PNG" style="height: 330px; display: block; margin: 0 auto;margin-top: 1cm;">
 
