@@ -36,9 +36,16 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
 ![Default-aligned image](figures/Chapter02-Glacier.PNG)
 
 
-- Optimized for data storage and long-term backups (low cost).
+- Optimized for data storage and long-term backups (low cost) online backup.
 - Retrieval of 3 to 5 hours.
 - Use as storage class of S3 and / or independent storage service
+- Designed for extreme durability 99.999999999% over a given year.
+- Any kind of data, in any format. Typical Storage: TAR or ZIP files.
+  - <u>Archives:</u> contain up to 40TB of data (unlimited # of files),
+    each archive have a unique ID, automatically encrypted, immutable: not modified after created.
+  - <u>Vaults:</u> containers for archives, up to 1000 Vaults per AWS account. Control using IAM policies or vault access policies.
+  - <u>Vaults Locks:</u> Compliance Controls like WORM (Write Once Read Many) not change the policy.
+  - <u>Data Retrieval: </u> Up to 5% free each month. More than 5% => Retrieval Fees. Set a policy for this.  
 
 ---
 ## Object Storage Vs. Traditional Block and File Storage
@@ -141,7 +148,6 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
   - Create friendly DNS name for won domain for the website using a DNS CNAME or use Amazon Route 53 alias that resolves to the Amazon S3 website URL.
   - Test the website.
 
-
 # Amazon S3 Advanced Features
 High durability, low latency, high performance object storage:
 - <b>Prefixes and Delimiters:</b> Like folders / subfolders delimiters : example: / or \ supported by REST API, wrapper SDK, AWS CLI and Management Console. Organize new data and maintain folder hierarchy. With IAM can be combined for access or sharing "subdirectories" / "home directories" within a single bucket restricting access defined by prefixes: logs/2016/January/server42.log
@@ -153,19 +159,39 @@ High durability, low latency, high performance object storage:
   - <u>Amazon Glacier:</u> Extremely low cost cloud storage for data not require real-time access. (Long term backups). Hours retrieval. For retrieval use the S3 API (3 to 5 hours later) the object is copied to Amazon RRS. Allows to retrieve up to 5% of the Amazon S3 data on Amazon Glacier for free each month, the rest is a restore fee. (Policy data retrieval can be applied here)
     - Also a stand alone storage service, with a separate API and unique characteristics.
 
+# Object Lifecycle Management
+- Object lifecycle management policies can be used to automatically move data between storage classes based on time.
 
-
+- Amazon S3 data can be encrypted using server-side or client-side encryption, and encryption
+keys can be managed with Amazon KMS.
+- Versioning and MFA Delete can be used to protect against accidental deletion.
+- Cross-region replication can be used to automatically copy new objects from a source bucket
+in one region to a target bucket in another region.
+- Pre-signed URLs grant time-limited permission to download objects and can be used to
+protect media and other web content from unauthorized “web scraping.”
+- Multipart upload can be used to upload large objects, and Range GETs can be used to
+download portions of an Amazon S3 object or Amazon Glacier archive.
+- Server access logs can be enabled on a bucket to track requestor, object, action, and response.
+- Amazon S3 event notifications can be used to send an Amazon SQS or Amazon SNS message
+or to trigger an AWS Lambda function when an object is created or deleted.
 
 ---
 
-# Pricing Example Comparison
+# Pricing Example Comparison:
 
 ![Default-aligned image](figures/pricing_s3_vs_glacier.png)
 
+ For Region: US East (Ohio): https://aws.amazon.com/s3/pricing/
 - For : 50 TB/ month on <b>S3</b> cost: $0.023 x 50.000 = us$ 1.150
 - For : 50 TB/ month on <b>Glacier</b> cost: $0.004 x50.000 = us$ 200
 
 ---
+# Differences between Amazon Glacier and Amazon S3  
+- Glacier: 40 TB archives vs. S3: 5 TB.
+- Glacier: system generated archive ID vs. S3: friendly key names.
+- Glacier: encrypted automatically vs. S3 : optional encryption.
+- Using Amazon Glacier as Amazon s3 Storage class together with object lifecycle policies
+  => use S3 interface for Glacier.
 ---
 
 ## Practice with AWS account:
