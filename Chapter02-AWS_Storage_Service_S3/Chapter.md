@@ -162,20 +162,53 @@ High durability, low latency, high performance object storage:
 # Object Lifecycle Management
 - Object lifecycle management policies can be used to automatically move data between storage classes based on time.
 
-- Amazon S3 data can be encrypted using server-side or client-side encryption, and encryption
-keys can be managed with Amazon KMS.
-- Versioning and MFA Delete can be used to protect against accidental deletion.
+- Amazon S3 Object Lifecycle Management roughly equivalent to: storage tiering.
+- <u>Data</u> :
+  -  (Hot) Frequently accessed.
+  -  (Warm) Less frequently accessed).
+  -  (Cold) Long-term backup/archive.
+
+Amazon S3 lifecycle configuration rules: reduce storage costs by transitioning data from one storage class to another.
+Example lifecycle rules for backup : (applies to a entire bucket or specific objects by a prefix)
+- Store backup data initially in Amazon S3 Standard.
+- After 30 days, transition to Amazon Standard-IA.
+- After 90 days, transition to Amazon Glacier.
+- After 3 years, delete.
+
+# Encryption
+- Amazon S3 data can be encrypted using server-side encryption (SSE) or client-side encryption, and encryption
+keys can be managed with Amazon Key Management Service -KMS (256 bit AES).
+- SSE-KMS (AWS KMS Keys): Full solution AWS: permissions for master key, auditing, fail attempts
+- SSE-C (Customer-Provided Keys): Full control keys encrypt/decrypt
+- Client-Side Encryption: Use AWS KMS master key.  Use a client-side master key.
+
+# Versioning & MFA (Multi Factor Authentication) Delete
+- Versioning (on bucket level) and MFA Delete can be used to protect against accidental deletion.
+- MFA with additional authentication to delete an object or change versioning.
+
+# Pre-signed URLs
+- For access an object URL : create a pre-signed URL: security credentials, bucket name, object key, HTTP method (GET), expiration date/time.
+- Prevent -content scraping- of web content.
+
+# Multipart upload API
+- For objects larger than 100Mb, and must use for 5Gb. Automatically by AWS CLI (cp, mv, sync) for large objects.
+
+# Range GETs
+- Download a portion of object on Amazon S3 / Glacier.
+- Range HTTP header in GET request or SDK wrapper libraries for a range of bytes of the object.
+
+# Cross-Region Replication
 - Cross-region replication can be used to automatically copy new objects from a source bucket
-in one region to a target bucket in another region.
-- Pre-signed URLs grant time-limited permission to download objects and can be used to
-protect media and other web content from unauthorized “web scraping.”
-- Multipart upload can be used to upload large objects, and Range GETs can be used to
-download portions of an Amazon S3 object or Amazon Glacier archive.
-- Server access logs can be enabled on a bucket to track requestor, object, action, and response.
+in one region to a target bucket in another region. Enabled for source/destination buckets and IAM policy.
+
+# Logging
+- Server access logs can be enabled on a bucket to track requestor (IP address), object, action (get, put, list...), and response.
+
+# Event Notifications
 - Amazon S3 event notifications can be used to send an Amazon SQS or Amazon SNS message
 or to trigger an AWS Lambda function when an object is created or deleted.
-
----
+- Setup at the bucket level, configure by AWS console or REST API or AWS SDK (PUT, POST, COPY, Multipart upload, DELETE) or RRS object lost.
+--
 
 # Pricing Example Comparison:
 
@@ -214,7 +247,7 @@ http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-windows.html
 ![Default-aligned image](figures/Chapter02-mario.PNG)
 
 ## S3 Client: Cyberduck
-- On Windows / OSX
+- On Windows / OSX :  https://cyberduck.io/?l=en
 
 ![Default-aligned image](figures/Chapter02-mario_cyberduck.PNG)
 ---
