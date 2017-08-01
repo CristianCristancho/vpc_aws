@@ -13,6 +13,7 @@ storage.
    - AWS IAM, AWS KMS, Amazon EC2, Amazon EBS, Amazon EMR, Amazon Dynamo DB, Amazon Redshift,
 Amazon SQS, AWS Lambda, and Amazon Cloud Front.
 
+
 ---
 
 ## Common use cases for Amazon S3 storage include:
@@ -27,6 +28,7 @@ Amazon SQS, AWS Lambda, and Amazon Cloud Front.
 - Infrequent access
 - Archive
   - S3 Offers lifecycle policies: Permissions, ACL and Encryption.
+
 
 ---
 
@@ -43,6 +45,7 @@ Amazon SQS, AWS Lambda, and Amazon Cloud Front.
   - <u>Vaults:</u> containers for archives, up to 1000 Vaults per AWS account. Control using IAM policies or vault access policies.
   - <u>Vaults Locks:</u> Compliance Controls like WORM (Write Once Read Many) not change the policy.
   - <u>Data Retrieval: </u> Up to 5% free each month. More than 5% => Retrieval Fees. Set a policy for this.  
+
 
 ---
 
@@ -64,6 +67,7 @@ Amazon SQS, AWS Lambda, and Amazon Cloud Front.
   - Operations: GET and PUT
   - No worry to replication, capacity planning, scalability: S3 automatically partitions buckets to support high request, replicate across regions and simultaneous access users.
 
+
 ---
 
 ## Amazon S3 Basics - Buckets
@@ -74,6 +78,9 @@ Amazon SQS, AWS Lambda, and Amazon Cloud Front.
 # AWS regions
 - Every bucket created in a specific region. Control where is stored, unless specify copy to another region.
 
+---
+
+
 # Objects
 - Objects are the entities or files on AWS S3. Store any kind of data / any format.
 - From 0 bytes to 5TB, single bucket can store unlimited number of objects.
@@ -82,17 +89,20 @@ Amazon SQS, AWS Lambda, and Amazon Cloud Front.
     -  System metadata (by Amazon s3 itself: last date, size, MD5 digest, HHTP Content-Type )
     -  User metadata: Optional specified at the time object created. Custom metadata.
 
+---
+
 # Keys
 - Every object identified by a <i>key</i> (like filename): 1024 bytes Unicode UTF-8 chars.
 - Keys unique in single bucket. Different buckets can have same key.
 - Combinations of key/bucket and optional version ID identify an Amazon S3 object.
 
----
-
 # Object URL
 - Every object accessed by an unique URL used the web services endpoint, bucket, object key.
 - Example: http://marioceron.com.s3.amazonaws.com/test/Chapter02-S3.PNG
  where: marioceron.com = bucket name, /test/Chapter02-S3.PNG = key or filename (include the / \ ) No file and folder hierarchy.
+
+---
+
 
 # Amazon S3 Operations: Amazon S3 API
 - Create/delete a bucket.
@@ -100,6 +110,7 @@ Amazon SQS, AWS Lambda, and Amazon Cloud Front.
 - Read an object.
 - Delete an object.
 - List keys of a bucket.
+
 
 ---
 
@@ -111,6 +122,8 @@ Amazon SQS, AWS Lambda, and Amazon Cloud Front.
   - iOS, Android, JavaScript, .NET, Node.js, PHP, Python, Ruby, Go, C++.
   - AWS CLI (Command Line Interface) and AWS Management Console.
   - Legacy HTTPS endpoint supported. Originally supported SOAP API.
+
+---
 
 # Durability and Availability
 - Durability: 99.999999999% and Availability 99.99% over a given year.
@@ -167,6 +180,9 @@ High durability, low latency, high performance object storage:
   - <u>Standard:</u> It delivers low first-byte latency and high throughput. Standard place to start.
   - <u>Standard Infrequent Access (Standard-IA):</u> Lower per GB-month cost than Standard, and minimum object size (128KB), minimum duration (30 days), and per-GB retrieval cost. For data stored longer than 30 days.
   - <u>Reduced Redundancy Storage (RSS):</u> Lower durability (4 nines) than Standard / IA at reduced cost. For derivate data like image thumbnails.
+
+---
+
   - <u>Amazon Glacier:</u> Extremely low cost cloud storage for data not require real-time access. (Long term backups). Hours retrieval. For retrieval use the S3 API (3 to 5 hours later) the object is copied to Amazon RRS. Allows to retrieve up to 5% of the Amazon S3 data on Amazon Glacier for free each month, the rest is a restore fee. (Policy data retrieval can be applied here)
     - Also a stand alone storage service, with a separate API and unique characteristics.
 
@@ -201,6 +217,8 @@ keys can be managed with Amazon Key Management Service -KMS (256 bit AES).
 - Versioning (on bucket level) and MFA Delete can be used to protect against accidental deletion.
 - MFA with additional authentication to delete an object or change versioning.
 
+---
+
 # Pre-signed URLs
 - For access an object URL : create a pre-signed URL: security credentials, bucket name, object key, HTTP method (GET), expiration date/time.
 - Prevent -content scraping- of web content.
@@ -221,6 +239,8 @@ in one region to a target bucket in another region. Enabled for source/destinati
 # Logging
 - Server access logs can be enabled on a bucket to track requestor (IP address), object, action (get, put, list...), and response.
 
+---
+
 # Event Notifications
 - Amazon S3 event notifications can be used to send an Amazon SQS or Amazon SNS message
 or to trigger an AWS Lambda function when an object is created or deleted.
@@ -231,7 +251,10 @@ or to trigger an AWS Lambda function when an object is created or deleted.
 
 # Pricing Example Comparison:
 
-![Default-aligned image](figures/pricing_s3_vs_glacier.png)
+
+<p align="center">
+<img src="file:///C:/Users/mceron/Documents/AWS_Practice/cloud-aws-studygroup/Chapter02-AWS_Storage_Service_S3/figures/pricing_s3_vs_glacier.png" width="600px">
+</p>
 
  For Region: US East (Ohio): https://aws.amazon.com/s3/pricing/
 - For : 50 TB/ month on <b>S3</b> cost: $0.023 x 50.000 = us$ 1.150
@@ -248,16 +271,17 @@ or to trigger an AWS Lambda function when an object is created or deleted.
 
 ---
 
-## Practice with AWS account:
-
-## AWS S3 Console
+## Practice with AWS account: AWS S3 Console
 - Create an user on Identity and Access Management IAM Console:
   - marioceron
 - Create a bucket: marioceron.com
   - Create a folder for example: mario, test
   - Upload files
 
-![Default-aligned image](figures/Chapter02-aws_console_mario.PNG)
+
+<p align="center">
+<img src="file:///C:/Users/mceron/Documents/AWS_Practice/cloud-aws-studygroup/Chapter02-AWS_Storage_Service_S3/figures/Chapter02-aws_console_mario.PNG" width="700px">
+</p>
 
 ---
 
@@ -267,11 +291,16 @@ http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-windows.html
    <b><i>aws configure</i></b>
   -  Requires AWS key and Secret Key
 
-![Default-aligned image](figures/Chapter02-mario.PNG)
+<p align="center">
+<img src="file:///C:/Users/mceron/Documents/AWS_Practice/cloud-aws-studygroup/Chapter02-AWS_Storage_Service_S3/figures/Chapter02-mario.PNG" width="700px" height="400px">
+</p>
 
 ---
 
 ## S3 Client: Cyberduck
 - On Windows / OSX :  https://cyberduck.io/?l=en
 
-![Default-aligned image](figures/Chapter02-mario_cyberduck.PNG)
+
+<p align="center">
+<img src="file:///C:/Users/mceron/Documents/AWS_Practice/cloud-aws-studygroup/Chapter02-AWS_Storage_Service_S3/figures/Chapter02-mario_cyberduck.PNG" width="700px">
+</p>
