@@ -1,19 +1,17 @@
 
-
-class: center, middle
-
 ## Amazon Simple Storage Service (Amazon S3) and Amazon Glacier
 
 ![Default-aligned image](figures/Chapter02-S3.PNG)
 
 Amazon S3 provides developers and IT teams with secure, durable, and highly-scalable cloud
 storage.
+
 - Object Storage with simple web interface:  store and retrieve any amount of data from anywhere on the web
 - Allow to pay only what you use.
 - One of the first AWS services (foundational web services).
 - High level of integration with AWS Cloud services like:
-   - AWS IAM, AWS KMS, Amazon EC2, Amazon EBS, Amazon EMR, Amazon DynamoDB, Amazon Redshift,
-Amazon SQS, AWS Lambda, and Amazon CloudFront
+   - AWS IAM, AWS KMS, Amazon EC2, Amazon EBS, Amazon EMR, Amazon Dynamo DB, Amazon Redshift,
+Amazon SQS, AWS Lambda, and Amazon Cloud Front.
 
 ---
 
@@ -35,7 +33,6 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
 ## Amazon Glacier Cloud Storage Service
 ![Default-aligned image](figures/Chapter02-Glacier.PNG)
 
-
 - Optimized for data storage and long-term backups (low cost) online backup.
 - Retrieval of 3 to 5 hours.
 - Use as storage class of S3 and / or independent storage service
@@ -48,6 +45,7 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
   - <u>Data Retrieval: </u> Up to 5% free each month. More than 5% => Retrieval Fees. Set a policy for this.  
 
 ---
+
 ## Object Storage Vs. Traditional Block and File Storage
 
 - <u>Block Storage:</u> Low  level number (raw), and manage data as fixed-size blocks
@@ -66,16 +64,17 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
   - Operations: GET and PUT
   - No worry to replication, capacity planning, scalability: S3 automatically partitions buckets to support high request, replicate across regions and simultaneous access users.
 
-## Amazon S3 Basics
-## Buckets
+---
+
+## Amazon S3 Basics - Buckets
 - <u>Bucket:</u> Container (web folder) for objects (files) stored in Amazon S3.
 - Bucket Names are global, unique, like DNS, up tp 63 lowercase letters, #, hyphens, and periods.
 - Up to 100 buckets per account by default.
 
-## AWS regions
+# AWS regions
 - Every bucket created in a specific region. Control where is stored, unless specify copy to another region.
 
-## Objects
+# Objects
 - Objects are the entities or files on AWS S3. Store any kind of data / any format.
 - From 0 bytes to 5TB, single bucket can store unlimited number of objects.
 - Object: Data (the file itself: stream of bytes) and Metadata (about file: set name/value pairs describe the object).
@@ -83,22 +82,26 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
     -  System metadata (by Amazon s3 itself: last date, size, MD5 digest, HHTP Content-Type )
     -  User metadata: Optional specified at the time object created. Custom metadata.
 
-## Keys
+# Keys
 - Every object identified by a <i>key</i> (like filename): 1024 bytes Unicode UTF-8 chars.
 - Keys unique in single bucket. Different buckets can have same key.
 - Combinations of key/bucket and optional version ID identify an Amazon S3 object.
 
-## Object URL
+---
+
+# Object URL
 - Every object accessed by an unique URL used the web services endpoint, bucket, object key.
 - Example: http://marioceron.com.s3.amazonaws.com/test/Chapter02-S3.PNG
  where: marioceron.com = bucket name, /test/Chapter02-S3.PNG = key or filename (include the / \ ) No file and folder hierarchy.
 
-## Amazon S3 Operations: Amazon S3 API
+# Amazon S3 Operations: Amazon S3 API
 - Create/delete a bucket.
 - Write an object.
 - Read an object.
 - Delete an object.
 - List keys of a bucket.
+
+---
 
 # REST (Representational State Transfer) API
 - Use standard HTTP/HTTPS: Create / delete buckets, list keys, read/write objects,
@@ -117,10 +120,15 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
 - For non-critical: Use RRS (Reduced Redundancy Storage) at lower cost (99.99% durability).
 - Additional features: versioning, cross-region replication and MFA Delete for accidental user deletion.
 
+---
+
 # Data Consistency
 - Amazon S3 is an <i>Eventually Consistent</i> system.
 - Data replicated cross servers, changes in data take some time to propagate, some cases after update / delete data may return stale data. Not for new objects, S3 have (read-after-write) consistency.
 - Updates are Atomic (for eventually Consistent) ensure non inconsistent mix of data.
+
+
+---
 
 # Access Control
 - Amazon S3 secure by default. Create bucket / object only you have access. For allow control to others Amazon S3 provides:
@@ -134,6 +142,7 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
 - AWS S3 Policy: Who access the bucket, from where (IP address or inter-domain routing block CIDR), and what time of day.
 - IAM policies may be associated with IAM principal that grant access to an Amazon S3 bucket. Only assign IAM policies to principals in AWS that have control.
 
+---
 
 # Static Website Hosting
 
@@ -148,6 +157,8 @@ Amazon SQS, AWS Lambda, and Amazon CloudFront
   - Create friendly DNS name for won domain for the website using a DNS CNAME or use Amazon Route 53 alias that resolves to the Amazon S3 website URL.
   - Test the website.
 
+---
+
 # Amazon S3 Advanced Features
 High durability, low latency, high performance object storage:
 - <b>Prefixes and Delimiters:</b> Like folders / subfolders delimiters : example: / or \ supported by REST API, wrapper SDK, AWS CLI and Management Console. Organize new data and maintain folder hierarchy. With IAM can be combined for access or sharing "subdirectories" / "home directories" within a single bucket restricting access defined by prefixes: logs/2016/January/server42.log
@@ -158,6 +169,8 @@ High durability, low latency, high performance object storage:
   - <u>Reduced Redundancy Storage (RSS):</u> Lower durability (4 nines) than Standard / IA at reduced cost. For derivate data like image thumbnails.
   - <u>Amazon Glacier:</u> Extremely low cost cloud storage for data not require real-time access. (Long term backups). Hours retrieval. For retrieval use the S3 API (3 to 5 hours later) the object is copied to Amazon RRS. Allows to retrieve up to 5% of the Amazon S3 data on Amazon Glacier for free each month, the rest is a restore fee. (Policy data retrieval can be applied here)
     - Also a stand alone storage service, with a separate API and unique characteristics.
+
+---
 
 # Object Lifecycle Management
 - Object lifecycle management policies can be used to automatically move data between storage classes based on time.
@@ -174,6 +187,8 @@ Example lifecycle rules for backup : (applies to a entire bucket or specific obj
 - After 30 days, transition to Amazon Standard-IA.
 - After 90 days, transition to Amazon Glacier.
 - After 3 years, delete.
+
+---
 
 # Encryption
 - Amazon S3 data can be encrypted using server-side encryption (SSE) or client-side encryption, and encryption
@@ -193,6 +208,8 @@ keys can be managed with Amazon Key Management Service -KMS (256 bit AES).
 # Multipart upload API
 - For objects larger than 100Mb, and must use for 5Gb. Automatically by AWS CLI (cp, mv, sync) for large objects.
 
+---
+
 # Range GETs
 - Download a portion of object on Amazon S3 / Glacier.
 - Range HTTP header in GET request or SDK wrapper libraries for a range of bytes of the object.
@@ -208,7 +225,9 @@ in one region to a target bucket in another region. Enabled for source/destinati
 - Amazon S3 event notifications can be used to send an Amazon SQS or Amazon SNS message
 or to trigger an AWS Lambda function when an object is created or deleted.
 - Setup at the bucket level, configure by AWS console or REST API or AWS SDK (PUT, POST, COPY, Multipart upload, DELETE) or RRS object lost.
---
+
+---
+
 
 # Pricing Example Comparison:
 
@@ -219,12 +238,14 @@ or to trigger an AWS Lambda function when an object is created or deleted.
 - For : 50 TB/ month on <b>Glacier</b> cost: $0.004 x50.000 = us$ 200
 
 ---
+
 # Differences between Amazon Glacier and Amazon S3  
 - Glacier: 40 TB archives vs. S3: 5 TB.
 - Glacier: system generated archive ID vs. S3: friendly key names.
 - Glacier: encrypted automatically vs. S3 : optional encryption.
-- Using Amazon Glacier as Amazon s3 Storage class together with object lifecycle policies
-  => use S3 interface for Glacier.
+- Using Amazon Glacier as Amazon s3 Storage class together with object lifecycle policies => use S3 interface for Glacier.
+
+
 ---
 
 ## Practice with AWS account:
@@ -238,6 +259,8 @@ or to trigger an AWS Lambda function when an object is created or deleted.
 
 ![Default-aligned image](figures/Chapter02-aws_console_mario.PNG)
 
+---
+
 ## AWS CLI:
 http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-windows.html
 - Install package and add on machine the PATH, then configure with:
@@ -246,9 +269,9 @@ http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-windows.html
 
 ![Default-aligned image](figures/Chapter02-mario.PNG)
 
+---
+
 ## S3 Client: Cyberduck
 - On Windows / OSX :  https://cyberduck.io/?l=en
 
 ![Default-aligned image](figures/Chapter02-mario_cyberduck.PNG)
----
----
