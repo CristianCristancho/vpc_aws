@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Introduction to AWS</title>
+    <title>Amazon S3 & Amazon Glacier</title>
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -19,7 +19,6 @@
         font-weight: normal;
       }
 
-  
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 
       .remark-slide-content { background-color: #272822 ;}
